@@ -50,7 +50,6 @@ for (const value of arrayL) {
 console.log(Array.isArray([])); //true
 console.log(Object.prototype.toString.call([]).slice(8, 13));
 
-//6.2.5
 //在 ES6 中，Array 的原型上暴露了 3 个用于检索数组内容的方法：keys()、values()和
 //entries()。keys()返回数组索引的迭代器，values()返回数组元素的迭代器，而 entries()返回
 //索引/值对的迭代器：
