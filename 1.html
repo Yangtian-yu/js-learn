@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  #app{
+    height: 100px;
+    width: 100px;
+    background-color: green;
+    margin: 0 auto;
+    border-radius: 100px;
+  }
+</style>
+<body>
+  <div id="app"></div>
+</body>
+<script>
+  const app = document.getElementById('app')
+  console.log(app);
+  function changeColor(duration,color){
+    return new Promise((resolve,reject)=>{
+      setTimeout(()=>{
+        
+        resolve( color)
+       
+      },duration)
+    })
+  }
+  async function foo(){
+    await changeColor(3000,'green').then((res)=>
+    {app.style.background=res 
+      console.log(res);
+    })
+    await changeColor(2000,'red').then((res)=>{
+      app.style.background=res
+      console.log(res);
+    }
+      )
+    await changeColor(1000,'yellow').then((res)=>{
+      app.style.background=res
+      console.log(res);
+    })
+  }
+ setInterval(() => {
+  foo()
+ }, 6000);  
+</script>
+</html>
