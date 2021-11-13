@@ -20,33 +20,25 @@
 </body>
 <script>
   const app = document.getElementById('app')
-  console.log(app);
-  function changeColor(duration,color){
-    return new Promise((resolve,reject)=>{
-      setTimeout(()=>{
-        
-        resolve( color)
-       
-      },duration)
-    })
-  }
-  async function foo(){
-    await changeColor(3000,'green').then((res)=>
-    {app.style.background=res 
-      console.log(res);
-    })
-    await changeColor(2000,'red').then((res)=>{
-      app.style.background=res
-      console.log(res);
-    }
-      )
-    await changeColor(1000,'yellow').then((res)=>{
-      app.style.background=res
-      console.log(res);
-    })
-  }
- setInterval(() => {
-  foo()
- }, 6000);  
+   function sleep(duration,color){
+     return new Promise((resolve,reject)=>{
+       setTimeout(() => {
+         console.log(color);
+         resolve()
+       }, duration);
+     })
+   }
+   async function changeColor(duration,color){
+     app.style.background = color
+     await sleep(duration,color)
+   }
+   async function main(){
+     while (true) {
+       await changeColor(3000,'green');
+       await changeColor(1000,'yellow');
+       await changeColor(2000,'red')
+     }
+   }
+   main()
 </script>
 </html>

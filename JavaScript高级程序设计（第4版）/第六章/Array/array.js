@@ -57,6 +57,7 @@ const a = ["foo", "bra", "baz", "qux"];
 const aKeys = Array.from(a.keys());
 const aValues = Array.from(a.values());
 const aEntries = Array.from(a.entries());
+console.log(a.keys());
 console.log(aKeys); // [0, 1, 2, 3]
 console.log(aValues); // ["foo", "bar", "baz", "qux"]
 console.log(aEntries); // [[0, "foo"], [1, "bar"], [2, "baz"], [3, "qux"]]
