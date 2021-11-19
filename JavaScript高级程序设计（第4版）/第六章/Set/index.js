@@ -7,6 +7,7 @@ console.log(m.size, "----------");
 console.log(Array.from(m.keys()));
 console.log(m.values(), "============");
 console.log(Array.from(m.entries()));
+console.log(m);
 console.log(...m, "-------------");
 const s = new Set();
 s.add("val1");
