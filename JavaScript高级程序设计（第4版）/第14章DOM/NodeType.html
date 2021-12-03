@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <p id="father">
+        <span>首</span>
+        <span id="test">杨天宇</span>
+        <span>尾</span>
+        <ul id="myList"> 
+          <li>item 1</li> 
+          <li>item 2</li> 
+          <li>item 3</li> 
+         </ul>
+      </p>
+    </div>
+  </body>
+  <script>
+    const test = document.querySelector("#test");
+    const father = document.querySelector("#father");
+    const myList = document.querySelector("#myList");
+    console.log(test.nodeType); //1
+    console.log(test.nodeType === Node.ELEMENT_NODE); //true
+    console.log(test.nodeName); //span
+    console.log(father.childNodes[1]);
+    console.log(father.childNodes.item(1));
+    console.log(father.childNodes.length);
+    console.log(test.nextSibling);
+    console.log(test.previousSibling);
+    // father.appendChild(test);
+    // father.insertBefore(test, father.firstChild);
+    // father.replaceChild(test, father.lastChild);
+    // father.removeChild(test);
+    father.normalize();
+    let deepList = myList.cloneNode(true);
+    const arrayNodes = Array.from(father.childNodes);
+    console.log(deepList);
+    console.log(arrayNodes);
+  </script>
+</html>

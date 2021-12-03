@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <img src="./assets/biu.jpg" name="myImage" />
+    <ul>
+      <li>
+        <input type="radio" value="red" name="color" id="colorRed" />
+        <label for="colorRed">Red</label>
+      </li>
+      <li>
+        <input type="radio" value="green" name="color" id="colorGreen" />
+        <label for="colorGreen">Green</label>
+      </li>
+      <li>
+        <input type="radio" value="blue" name="color" id="colorBlue" />
+        <label for="colorBlue">Blue</label>
+      </li>
+      <select name="age" id="1"></select>
+    </ul>
+  </body>
+  <script>
+    const documen = document;
+    console.log(documen);
+    const html = document.documentElement;
+    const url = document.URL;
+    const domain = document.domain;
+    const referrer = document.referrer;
+    console.log(url);
+    console.log(domain);
+    console.log(referrer);
+    console.log(document.title);
+    document.title = "杨天宇的页面";
+    const images = document.getElementsByTagName("img");
+    const myImage = images.namedItem("myImage");
+    console.log(myImage);
+    const allElements = document.getElementsByTagName("*");
+    console.log(allElements);
+    const arrayElements = Array.from(allElements);
+    console.log(arrayElements);
+    document.write("<strong>" + new Date().toString() + "</strong>");
+  </script>
+</html>
