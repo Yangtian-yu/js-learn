@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<button onclick="showMessage()">点击我</button>
+<input type="button" value="Click Me" onclick="console.log(event)">
+<input type="button" value="Click Me" onclick="console.log(this.value )">
+<form method="post">
+  <input type="text" name="username" id="btn">
+  <input type="button" value="Echo Username" onclick="console.log(username.value)">
+</form>
+</body>
+<script>
+    function showMessage() {
+    console.log('Hello world');
+  }
+    let btn = document.getElementById('btn');
+  btn.onclick = function () {
+    console.log(this.id);
+  }
+    let clickBtn = function () {
+    console.log('--------------');
+  }
+    btn.addEventListener('click',clickBtn,false)
+    btn.addEventListener("click", () => {
+    console.log("Hello world!");
+  }, false);
+  btn.removeEventListener('click',clickBtn,false)
+</script>
+
+</html>

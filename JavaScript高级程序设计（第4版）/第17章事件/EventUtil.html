@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="myDiv">
+      <button id="myBtn">click me</button>
+      <link rel="stylesheet" href="" id="myLink" />
+    </div>
+  </body>
+  <script>
+    var EventUtil = {
+      addHandler: function (element, type, handler) {
+        console.log(element);
+        if (element.addEventListener) {
+          element.addEventListener(type, handler, false);
+        } else if (element.attachEvent) {
+          element.attachEvent("on" + type, handler);
+        } else {
+          element["on" + type] = handler;
+        }
+      },
+      removeHandler: function (element, type, handler) {
+        if (element.removeEventListener) {
+          element.removeEventListener(type, handler, false);
+        } else if (element.detachEvent) {
+          element.detachEvent("on" + type, handler);
+        } else {
+          element["on" + type] = null;
+        }
+      },
+    };
+    let btn = document.getElementById("myBtn");
+    let handler = function (event) {
+      console.log(this);
+      console.log(event.target);
+      event.stopPropagation(); //取消后续的事件捕获或冒泡
+    };
+    document.body.onclick = function (event) {
+      console.log("Body clicked");
+    };
+    EventUtil.addHandler(btn, "click", handler);
+    let link = document.getElementById("myLink");
+    link.onclick = function (event) {
+      event.preventDefault(); //取消默认行为的事件
+    };
+    let div = document.getElementById("myDiv");
+    div.onclick = function (event) {
+      event.stopPropagation();
+      console.log(`${event.clientX}&${event.clientY}`);
+      console.log(`Page coordinates: ${event.pageX}, ${event.pageY}`);
+      console.log(`Screen coordinates: ${event.screenX}, ${event.screenY}`);
+    };
+  </script>
+</html>
+<style>
+  #myDiv {
+    height: 500px;
+    width: 500px;
+    margin: 0 auto;
+    background-color: grey;
+  }
+</style>
