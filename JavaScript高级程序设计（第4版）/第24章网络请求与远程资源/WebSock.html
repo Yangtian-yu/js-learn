@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    let socket = new WebSocket("ws://www.example.com/server.php");
+    socket.onerror = function () {
+      console.log("cocket connection error");
+    };
+    let stringData = "Hello world!";
+    let arrayBufferData = Uint8Array.from(["f", "o", "o"]);
+    let blobData = new Blob(["f", "o", "o"]);
+    socket.send(stringData);
+    socket.send(arrayBufferData);
+    socket.send(blobData);
+    socket.onmessage = function (event) {
+      let data = event.data;
+      console.log(data);
+    };
+  </script>
+</html>

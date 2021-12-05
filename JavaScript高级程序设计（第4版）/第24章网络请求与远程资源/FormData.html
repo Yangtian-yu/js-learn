@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    let data = new FormData();
+    data.append("name", "Nicholas");
+    let xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState == 4) {
+        try {
+          if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304) {
+            alert(xhr.responseText);
+          } else {
+            alert("Request was unsuccessful: " + xhr.status);
+          }
+        } catch (ex) {
+          // 假设由 ontimeout 处理
+        }
+      }
+    };
+    xhr.open("get", "timeout.php", true);
+    xhr.timeout = 1000; // 设置 1 秒超时
+    xhr.ontimeout = function () {
+      alert("Request did not return in a second.");
+    };
+    xhr.send(null);
+  </script>
+</html>
