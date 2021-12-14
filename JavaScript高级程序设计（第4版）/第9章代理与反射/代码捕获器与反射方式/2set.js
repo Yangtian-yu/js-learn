@@ -1,6 +1,6 @@
 const mytarget = {};
 const proxy = new Proxy(mytarget, {
-  set() {
+  set(target, property, value, receive) {
     console.log("set");
     return Reflect.set(...arguments);
   },
